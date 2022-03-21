@@ -1,0 +1,34 @@
+group 'com.tunein'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java-library'
+
+def toolVersions = [
+        appiumVersion        : '8.0.0',
+        aeonbitsVersion      : '1.0.12',
+        testngVersion        : '7.3.0',
+        selenideVersion      : '6.3.5',
+        lombokVersion        : '1.18.16',
+        loggerVersion        : '2.14.0',
+        assertjVersion       : '3.18.1',
+]
+
+repositories {
+    mavenCentral()
+}
+
+[compileJava, compileTestJava]*.options.collect {options -> options.encoding = 'UTF-8'}
+
+dependencies {
+    api "org.aeonbits.owner:owner:${toolVersions.aeonbitsVersion}",
+            "org.testng:testng:${toolVersions.testngVersion}",
+            "com.codeborne:selenide:${toolVersions.selenideVersion}",
+            "org.apache.logging.log4j:log4j-core:${toolVersions.loggerVersion}",
+            "org.assertj:assertj-core:${toolVersions.assertjVersion}",
+            "io.appium:java-client:${toolVersions.appiumVersion}",
+            "org.projectlombok:lombok:${toolVersions.lombokVersion}"
+
+    annotationProcessor "org.projectlombok:lombok:${toolVersions.lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${toolVersions.lombokVersion}"
+}
+
