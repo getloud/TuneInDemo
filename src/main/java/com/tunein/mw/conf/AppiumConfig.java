@@ -25,7 +25,7 @@ public interface AppiumConfig extends Config {
     boolean useNewWDA();
 
     @Key("new.command.timeout")
-    @DefaultValue("180")
+    @DefaultValue("120")
     int newCommandTimeout();
 }
 

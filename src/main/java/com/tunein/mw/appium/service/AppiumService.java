@@ -1,17 +1,13 @@
 package com.tunein.mw.appium.service;
 
-import com.google.inject.Singleton;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
 import java.io.File;
-import java.util.HashMap;
 
 import static com.tunein.mw.conf.ConfigLoader.config;
 
-
-@Singleton
 public class AppiumService {
 
     private static AppiumDriverLocalService service;

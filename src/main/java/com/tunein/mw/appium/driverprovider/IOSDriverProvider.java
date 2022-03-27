@@ -26,7 +26,7 @@ public class IOSDriverProvider implements WebDriverProvider {
         options.setPlatformVersion(config().platformVersion());
         options.setNewCommandTimeout(Duration.ofSeconds(config().newCommandTimeout()));
         options.withBrowserName("Safari");
-        options.setWebviewConnectTimeout(Duration.ofSeconds(5000));
+        options.setWebviewConnectTimeout(Duration.ofSeconds(5));
         options.setUdid(config().udid());
         options.setXcodeCertificate(new XcodeCertificate("iPhone Developer","UA4R9ZQWLZ"));
 

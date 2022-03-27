@@ -1,10 +1,5 @@
 package com.tunein.mw.tests.homepage;
 
-import com.tunein.mw.screens.HamburgerMenuPage;
-import com.tunein.mw.screens.HomepagePage;
-import com.tunein.mw.screens.NavigationPanel;
-import com.tunein.mw.screens.SigninSignupPage;
-import com.tunein.mw.testdata.UserProvider;
 import com.tunein.mw.tests.BaseTest;
 import org.openqa.selenium.ScreenOrientation;
 import org.testng.annotations.Test;
@@ -13,14 +8,9 @@ import static com.tunein.mw.screens.BaseScreen.rotateScreen;
 
 public class HomePageViewTest extends BaseTest {
 
-    HomepagePage homePage = new HomepagePage();
-    NavigationPanel navigationPanel = new NavigationPanel();
-    HamburgerMenuPage hamburgerMenuPage = new HamburgerMenuPage();
-    SigninSignupPage signinSignupPage = new SigninSignupPage();
-    UserProvider userProvider = new UserProvider();
-
-    @Test(description = "Verify main home page elements")
-    public void checkHomePage() {
+    @Test(description = "Verify main home page elements", dataProvider = "screenOrientation")
+    public void checkHomePage(ScreenOrientation orientation) {
+        rotateScreen(orientation);
         homePage
                 .clickOnCloseLandingPageButton()
                 .waitUntilPageLoaded()
