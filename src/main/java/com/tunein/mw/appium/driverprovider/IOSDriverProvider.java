@@ -8,21 +8,15 @@ import io.appium.java_client.remote.AutomationName;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 
-import javax.annotation.CheckReturnValue;
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
 import static com.tunein.mw.conf.ConfigLoader.config;
 
-@ParametersAreNonnullByDefault
 public class IOSDriverProvider implements WebDriverProvider {
 
     @Override
-    @CheckReturnValue
-    @Nonnull
     public WebDriver createDriver(Capabilities capabilities) {
         XCUITestOptions options = new XCUITestOptions();
         options.merge(capabilities);
@@ -34,7 +28,6 @@ public class IOSDriverProvider implements WebDriverProvider {
         options.withBrowserName("Safari");
         options.setWebviewConnectTimeout(Duration.ofSeconds(5000));
         options.setUdid(config().udid());
-        options.setUseNewWDA(true);
         options.setXcodeCertificate(new XcodeCertificate("iPhone Developer","UA4R9ZQWLZ"));
 
         try {

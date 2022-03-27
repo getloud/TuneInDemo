@@ -6,7 +6,10 @@ import com.tunein.mw.screens.NavigationPanel;
 import com.tunein.mw.screens.SigninSignupPage;
 import com.tunein.mw.testdata.UserProvider;
 import com.tunein.mw.tests.BaseTest;
+import org.openqa.selenium.ScreenOrientation;
 import org.testng.annotations.Test;
+
+import static com.tunein.mw.screens.BaseScreen.rotateScreen;
 
 public class HomePageViewTest extends BaseTest {
 
@@ -24,8 +27,9 @@ public class HomePageViewTest extends BaseTest {
                 .verifyHomePageContainsAllElements();
     }
 
-    @Test(description = "Verify login flow")
-    public void checkLoginFlow() {
+    @Test(description = "Verify login flow", dataProvider = "screenOrientation")
+    public void checkLoginFlow(ScreenOrientation orientation) {
+        rotateScreen(orientation);
         navigationPanel
                 .openHamburgerMenu();
         hamburgerMenuPage

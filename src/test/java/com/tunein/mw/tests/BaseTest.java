@@ -1,5 +1,6 @@
 package com.tunein.mw.tests;
 
+import com.google.inject.Inject;
 import com.tunein.mw.appium.binds.DriverModule;
 import com.tunein.mw.appium.service.AppiumService;
 import org.openqa.selenium.ScreenOrientation;
@@ -12,13 +13,14 @@ import static com.tunein.mw.conf.ConfigLoader.config;
 @Guice(modules = {DriverModule.class})
 public class BaseTest {
 
-    protected AppiumService server = new AppiumService();
+    @Inject
+    protected AppiumService server;
 
     @DataProvider(name = "screenOrientation")
     public static Object[][] screenOrientation() {
         return new Object[][]{
-                new Object[]{ScreenOrientation.LANDSCAPE},
-                new Object[]{ScreenOrientation.PORTRAIT}
+                new Object[]{ScreenOrientation.PORTRAIT},
+                new Object[]{ScreenOrientation.LANDSCAPE}
         };
     }
 
@@ -32,10 +34,9 @@ public class BaseTest {
         open(config().appURL());
     }
 
-
     @AfterClass
     public void afterClass(){
-            getAppiumDriver().quit();
+        getAppiumDriver().quit();
     }
 
     @AfterSuite
